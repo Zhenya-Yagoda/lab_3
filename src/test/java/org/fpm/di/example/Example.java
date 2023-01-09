@@ -1,5 +1,5 @@
 package org.fpm.di.example;
-
+//eugenia
 import org.fpm.di.Container;
 import org.fpm.di.Environment;
 import org.junit.Before;
@@ -30,10 +30,6 @@ public class Example {
 
     @Test
     public void shouldBuildInjectionGraph() {
-        /*
-        binder.bind(A.class, B.class);
-        binder.bind(B.class, new B());
-        */
         final B bAsSingleton = container.getComponent(B.class);
         assertSame(container.getComponent(A.class), bAsSingleton);
         assertSame(container.getComponent(B.class), bAsSingleton);
@@ -43,5 +39,27 @@ public class Example {
     public void shouldBuildInjectDependencies() {
         final UseA hasADependency = container.getComponent(UseA.class);
         assertSame(hasADependency.getDependency(), container.getComponent(B.class));
+    }
+    @Test
+    public void new_test_1(){
+        assertSame(container.getComponent(new_Student.class),container.getComponent(new_User.class));
+    }
+    @Test
+    public void new_test_2(){
+        final new_Student St_user=container.getComponent(new_Student.class);
+        assertSame(container.getComponent(new_Student.class), St_user);
+
+    }
+    @Test
+    public void new_test_3(){
+        new_User st = container.getComponent(new_User.class);
+        assertSame(st, container.getComponent(new_Student.class));
+
+    }
+    @Test
+    public void new_test_4(){
+        final new_Professor pr = container.getComponent(new_Professor.class);
+        assertSame(pr.get_new_user(),container.getComponent(new_Student.class));
+
     }
 }
