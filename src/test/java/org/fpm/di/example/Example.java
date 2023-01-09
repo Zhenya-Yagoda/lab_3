@@ -1,5 +1,4 @@
 package org.fpm.di.example;
-//eugenia
 import org.fpm.di.Container;
 import org.fpm.di.Environment;
 import org.junit.Before;
